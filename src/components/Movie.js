@@ -7,7 +7,12 @@ function Movie({ id, medium_cover_image, title, summary, genres }) {
       <h2>
         <Link to={`/movie/${id}`}>{title}</Link>
       </h2>
-      <p>{summary}</p>
+      <p>
+        {summary.length > 235
+          ? `${summary.slice(0, 235)} ...`
+          : summary}
+      </p>
+      {/* slice => 문자열을 잘라서 보여주는 함수 */}
       <ul>
         {genres.map((g) => (
           <li key={g}>{g}</li>
